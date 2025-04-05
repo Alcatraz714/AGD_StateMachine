@@ -8,10 +8,10 @@ namespace StatePattern.Enemy
     public class IdleState : IState
     {
         public EnemyController Owner { get; set; }
-        private OnePunchManStateMachine stateMachine;
+        private IStateMachine stateMachine;
         private float timer;
 
-        public IdleState(OnePunchManStateMachine stateMachine) => this.stateMachine = stateMachine;
+        public IdleState(IStateMachine stateMachine) => this.stateMachine = stateMachine;
 
         public void OnStateEnter() => ResetTimer();
 
