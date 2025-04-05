@@ -1,5 +1,6 @@
 using StatePattern.Main;
 using StatePattern.Player;
+using StatePattern.StateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,11 @@ namespace StatePattern.Enemy
     public class ShootingState : IState
     {
         public EnemyController Owner { get; set; }
-        private OnePunchManStateMachine stateMachine;
+        private IStateMachine stateMachine;
         private PlayerController target;
         private float shootTimer;
 
-        public ShootingState(OnePunchManStateMachine stateMachine) => this.stateMachine = stateMachine;
+        public ShootingState(IStateMachine stateMachine) => this.stateMachine = stateMachine;
 
         public void OnStateEnter()
         {
