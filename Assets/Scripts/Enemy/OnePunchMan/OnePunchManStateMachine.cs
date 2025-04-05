@@ -1,12 +1,13 @@
+using StatePattern.StateMachine;
 using System.Collections.Generic;
 
 namespace StatePattern.Enemy
 {
-    public class OnePunchManStateMachine
+    public class OnePunchManStateMachine : IStateMachine
     {
         private OnePunchManController Owner;
         private IState currentState;
-        protected Dictionary<OnePunchManStates, IState> States = new Dictionary<OnePunchManStates, IState>();
+        protected Dictionary<States, IState> States = new Dictionary<States, IState>();
 
         public OnePunchManStateMachine(OnePunchManController Owner)
         {
@@ -17,9 +18,9 @@ namespace StatePattern.Enemy
 
         private void CreateStates()
         {
-            States.Add(OnePunchManStates.IDLE, new IdleState(this));
-            States.Add(OnePunchManStates.ROTATING, new RotatingState(this));
-            States.Add(OnePunchManStates.SHOOTING, new ShootingState(this));
+            States.Add(StateMachine.States.IDLE, new IdleState(this));
+            States.Add(StateMachine.States.ROTATING, new RotatingState(this));
+            States.Add(StateMachine.States.SHOOTING, new ShootingState(this));
         }
 
         private void SetOwner()
@@ -39,13 +40,6 @@ namespace StatePattern.Enemy
             currentState?.OnStateEnter();
         }
 
-        public void ChangeState(OnePunchManStates newState) => ChangeState(States[newState]);
-    }
-
-    public enum OnePunchManStates
-    {
-        IDLE,
-        ROTATING,
-        SHOOTING
+        public void ChangeState(States newState) => ChangeState(States[newState]);
     }
 }
