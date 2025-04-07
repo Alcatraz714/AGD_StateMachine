@@ -92,5 +92,6 @@ namespace StatePattern.Enemy
         }
 
         private bool PlayerWon() => activeEnemies.Count == 0;
+        public void AddEnemy(EnemyController enemy) => activeEnemies.Add(enemy);
     }
 }
