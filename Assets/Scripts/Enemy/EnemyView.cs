@@ -82,5 +82,12 @@ namespace StatePattern.Enemy
             Destroy(gameObject);
         }
 
+        public void ChangeColor(Color changedcolor) => enemyGraphic.color = changedcolor;
+
+        public void SetDefaultColor(Color defaultcolor)
+        {
+            enemyGraphic.color = defaultcolor;
+        }
+
     }
 }

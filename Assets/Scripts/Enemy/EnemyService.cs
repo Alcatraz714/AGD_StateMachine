@@ -60,6 +60,9 @@ namespace StatePattern.Enemy
                 case EnemyType.PatrolMan:
                     enemy = new PatrolManController(enemyScriptableObject);
                     break;
+                case EnemyType.Hitman:
+                    enemy = new HitmanController(enemyScriptableObject);
+                    break;
                 default:
                     enemy = new EnemyController(enemyScriptableObject);
                     break;
@@ -89,5 +92,6 @@ namespace StatePattern.Enemy
         }
 
         private bool PlayerWon() => activeEnemies.Count == 0;
+        public void AddEnemy(EnemyController enemy) => activeEnemies.Add(enemy);
     }
 }
